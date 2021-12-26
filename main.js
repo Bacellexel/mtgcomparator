@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const expressEjsLayout = require('express-ejs-layouts');
 const puppeteer = require('puppeteer');
+const port = process.env.port || 8000;
+
 let f2fCards = [{}];
 let imgCards = [{}];
 app.set('view engine', 'ejs');
@@ -89,6 +91,6 @@ async function getData(page, selector){
     return valueArray;
 }
 
-app.listen(3001, function() {
-    console.log("Server started on port 3001");
+app.listen(port, function() {
+    console.log("Server started on port " + port);
 })
