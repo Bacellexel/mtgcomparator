@@ -1,0 +1,19 @@
+{
+  "name": "mtg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/Bacellexel/mtgcomparator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bacellexel/mtgcomparator/issues"
+  },
+  "homepage": "https://github.com/Bacellexel/mtgcomparator#readme"
+}
