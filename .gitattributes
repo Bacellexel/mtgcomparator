@@ -1,7 +1,6 @@
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
 *.exe filter=lfs diff=lfs merge=lfs -text
-<<<<<<< HEAD
 /Montserrat-Regular.ttf filter=lfs diff=lfs merge=lfs -text
 /node_modules/@types/node/crypto.d.ts filter=lfs diff=lfs merge=lfs -text
 /node_modules/@types/node/fs.d.ts filter=lfs diff=lfs merge=lfs -text
@@ -97,5 +96,3 @@
 /node_modules/puppeteer/lib/types.d.ts filter=lfs diff=lfs merge=lfs -text
 /node_modules/tr46/lib/mappingTable.json filter=lfs diff=lfs merge=lfs -text
 /node_modules/unbzip2-stream/dist/unbzip2-stream.min.js filter=lfs diff=lfs merge=lfs -text
-=======
->>>>>>> b52e7e332443b48bfccc99880163bb5b89beb156
