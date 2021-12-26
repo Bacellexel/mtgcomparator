@@ -20,13 +20,13 @@
     "express": "^4.17.2",
     "express-ejs-layouts": "^2.5.1",
     "json-loader": "^0.5.7",
-    "puppeteer": "^13.0.1"
+    "puppeteer-core": "^13.0.1"
   },
   "browser": {
     "colors": false,
     "events": "eventemitter3",
     "checkForModuleDuplicates": false,
-    "url": "./shims/url",      
+    "url": "./shims/url",
     "tracer": false
   }
 }
