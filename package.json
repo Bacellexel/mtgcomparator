@@ -4,8 +4,13 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+<<<<<<< HEAD
     "prestart": "main build",
     "start": "node main"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+>>>>>>> b52e7e332443b48bfccc99880163bb5b89beb156
   },
   "repository": {
     "type": "git",
@@ -16,10 +21,14 @@
   "bugs": {
     "url": "https://github.com/Bacellexel/mtgcomparator/issues"
   },
+<<<<<<< HEAD
   "homepage": "https://github.com/Bacellexel/mtgcomparator#readme",
   "dependencies": {
     "express": "^4.17.2",
     "express-ejs-layouts": "^2.5.1",
     "puppeteer": "^13.0.1"
   }
+=======
+  "homepage": "https://github.com/Bacellexel/mtgcomparator#readme"
+>>>>>>> b52e7e332443b48bfccc99880163bb5b89beb156
 }
