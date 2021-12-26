@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const expressEjsLayout = require('express-ejs-layouts');
 const puppeteer = require('puppeteer');
-const port = process.env.port || 8000;
+const port = process.env.PORT || 8000;
 
 let f2fCards = [{}];
 let imgCards = [{}];
