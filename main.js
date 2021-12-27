@@ -27,7 +27,12 @@ app.post('/', async (req, res) => {
     imgCards = [{}];
 
     const { cardName } = req.body;
-    const browser = await puppeteer.launch(/*{headless: false}*/);
+    const browser = await puppeteer.launch({
+        'args': [
+            '--no-sandbox',
+            'disable-setuid-sandbox'
+        ]
+    });
     const page = await browser.newPage();
     const page2 = await browser.newPage();
 
