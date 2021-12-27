@@ -46,6 +46,9 @@ app.post('/', async (req, res) => {
     page.goto('https://www.facetofacegames.com/search/?keyword=' + cardName);
     page2.goto('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?q=' + cardName);
 
+    page.waitForResponse('https://www.facetofacegames.com/search/?keyword=' + cardName);
+    page2.waitForResponse('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?q=' + cardName);
+
     await page.setRequestInterception(true)
     page.on('request', (request) => {
         if(request.resourceType() === 'image'){
