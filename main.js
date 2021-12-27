@@ -73,7 +73,7 @@ app.post('/', async (req, res) => {
     }
 
     for(let i = 0; i < imgNameArray.length; i++){
-        if(typeof(imgPriceArray[i]) !== 'undefined'){
+        if(typeof(imgPriceArray[i]) !== 'undefined' && imgNameArray[i].includes(cardName)){
             imgCards.push({
                 cardName: imgNameArray[i],
                 cardPrice: imgPriceArray[i],
