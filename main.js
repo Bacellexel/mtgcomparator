@@ -56,9 +56,6 @@ app.post('/', async (req, res) => {
         }
     })
 
-    await page.waitForSelector(f2fName);
-    await page2.waitForSelector('.card-info')
-
     let f2fPriceArray = await getData(page, f2fPrice);
     let f2fNameArray = await getData(page, f2fName);
     let f2fEditionArray = await getData(page, f2fEdition)
@@ -66,6 +63,10 @@ app.post('/', async (req, res) => {
     let imgPriceArray = await getData(page2, imgPrice);
     let imgNameArray = await getData(page2, imgName);
     let imgEditionArray = await getData(page2, imgEdition);
+
+    
+
+    res.redirect('/')
 
     /* Filtering out unique cards */
     for(let i = 0; i < f2fNameArray.length; i++){
@@ -90,8 +91,6 @@ app.post('/', async (req, res) => {
             });
         }
     }
-
-    res.redirect('/')
 })
 
 async function getData(page, selector){
