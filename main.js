@@ -43,11 +43,8 @@ app.post('/', async (req, res) => {
     const imgName = 'div.card-info > h3 > a'
     const imgEdition = 'div.card-info > span:nth-child(2)';
 
-    page.goto('https://www.facetofacegames.com/search/?keyword=' + cardName);
-    page2.goto('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?q=' + cardName);
-
-    page.waitForResponse('https://www.facetofacegames.com/search/?keyword=' + cardName);
-    page2.waitForResponse('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?q=' + cardName);
+    await page.goto('https://www.facetofacegames.com/search/?keyword=' + cardName);
+    await page2.goto('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?q=' + cardName);
 
     await page.setRequestInterception(true)
     page.on('request', (request) => {
@@ -58,6 +55,9 @@ app.post('/', async (req, res) => {
             request.continue();
         }
     })
+
+    await page.waitForSelector(f2fName);
+    await page2.waitForSelector('.card-info')
 
     let f2fPriceArray = await getData(page, f2fPrice);
     let f2fNameArray = await getData(page, f2fName);
