@@ -73,7 +73,7 @@ app.post('/', async (req, res) => {
     }
 
     for(let i = 0; i < imgNameArray.length; i++){
-        if(typeof(imgPriceArray[i]) !== 'undefined' && imgNameArray[i].includes(cardName)){
+        if(typeof(imgPriceArray[i]) !== 'undefined' && imgNameArray[i].localeCompare(cardName) === 0){
             imgCards.push({
                 cardName: imgNameArray[i],
                 cardPrice: imgPriceArray[i],
