@@ -43,9 +43,18 @@ app.post('/', async (req, res) => {
     const imgName = 'div.card-info > h3 > a'
     const imgEdition = 'div.card-info > span:nth-child(2)';
 
-    await page.goto('https://www.facetofacegames.com/search/?keyword=' + cardName);
-    await page2.goto('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?q=' + cardName);
+    page.goto('https://www.facetofacegames.com/search/?keyword=' + cardName);
+    page2.goto('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?q=' + cardName);
 
+    await page.setRequestInterception(true)
+    page.on('request', (request) => {
+        if(request.resourceType() === 'image'){
+             request.abort();
+        }
+        else{
+            request.continue();
+        }
+    })
 
     await page.waitForSelector(f2fName);
     await page2.waitForSelector('.card-info')
@@ -73,7 +82,7 @@ app.post('/', async (req, res) => {
     }
 
     for(let i = 0; i < imgNameArray.length; i++){
-        if(typeof(imgPriceArray[i]) !== 'undefined' && imgNameArray[i].localeCompare(cardName) === 0){
+        if(typeof(imgPriceArray[i]) !== 'undefined'){
             imgCards.push({
                 cardName: imgNameArray[i],
                 cardPrice: imgPriceArray[i],
