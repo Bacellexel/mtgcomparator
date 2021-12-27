@@ -65,6 +65,7 @@ app.post('/', async (req, res) => {
     let imgEditionArray = await getData(page2, imgEdition);
 
     
+    browser.close();
 
     res.redirect('/')
 
@@ -91,6 +92,7 @@ app.post('/', async (req, res) => {
             });
         }
     }
+
 })
 
 async function getData(page, selector){
