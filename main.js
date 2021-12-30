@@ -63,7 +63,7 @@ app.post('/', async (req, res) => {
     let f2fPriceArray = await getData(page, f2fPrice);
     let f2fNameArray = await getData(page, f2fName);
     let f2fEditionArray = await getData(page, f2fEdition)
-    let f2fImageArray = await getData(page, f2fImage);
+    let f2fImageArray = await getAttributeData(page, f2fImage, "src");
 
     let imgPriceArray = await getData(page2, imgPrice);
     let imgNameArray = await getData(page2, imgName);
@@ -106,6 +106,17 @@ async function getData(page, selector){
         let values = Array.from(document.querySelectorAll(selector));
         let results = values.map(value => {
             return value.innerText;
+        })
+        return results;
+    }, selector);
+    return valueArray;
+}
+
+async function getAttributeData(page, selector, attribute){
+    let valueArray = await page.evaluate((selector) =>{
+        let values = Array.from(document.querySelectorAll(selector));
+        let results = values.map(value => {
+            return value.getAttribute(attribute);
         })
         return results;
     }, selector);
