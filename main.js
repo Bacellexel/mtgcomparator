@@ -39,6 +39,7 @@ app.post('/', async (req, res) => {
     const f2fPrice = '.price-container';
     const f2fName = '.hawk-results__hawk-contentTitle';
     const f2fEdition = '.hawk-results__hawk-contentSubtitle';
+    const f2fImage = '#hawksearch__search-page > div > div.hawk__body.hawk_body__search > div.hawksearch__right > div:nth-child(2) > div > div.hawk-results__listing.undefined > div:nth-child(1) > div > div.hawk-results__item-imageWrapper > div > img'
     const imgPrice = 'div.card-info > div.input-group > div.price-listing > table > tbody > tr:nth-child(2) > td:nth-child(2)'
     const imgName = 'div.card-info > h3 > a'
     const imgEdition = 'div.card-info > span:nth-child(2)';
@@ -62,6 +63,7 @@ app.post('/', async (req, res) => {
     let f2fPriceArray = await getData(page, f2fPrice);
     let f2fNameArray = await getData(page, f2fName);
     let f2fEditionArray = await getData(page, f2fEdition)
+    let f2fImageArray = await getData(page, f2fImage);
 
     let imgPriceArray = await getData(page2, imgPrice);
     let imgNameArray = await getData(page2, imgName);
@@ -81,7 +83,8 @@ app.post('/', async (req, res) => {
                 f2fCards.push({
                     cardName: f2fNameArray[i],
                     cardPrice:f2fPriceArray[i].replace('CAD', ''),
-                    cardEdition:f2fEditionArray[i]
+                    cardEdition:f2fEditionArray[i],
+                    cardImage:f2fImageArray[i]
                 });  
         }        
     }
