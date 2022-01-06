@@ -156,10 +156,10 @@
   <script type = "text/javascript">
     function show(i) {
 
-      document.getElementsByClassName("card-preview").style.display = 'none';
+      document.querySelectorAll('.card-preview').forEach(c => c.style.display = 'none');
 
       if(document.getElementById('img' + i).style.display == 'block'){
-        document.getElementById('img' + i).style.display = 'none';
+        document.getElementById('img' + i).style.display == 'none'
       } else {
         document.getElementById('img' + i).style.display = 'block';
       }
