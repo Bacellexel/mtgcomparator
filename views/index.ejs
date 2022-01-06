@@ -116,18 +116,17 @@
               <th>Name</th>
               <th>Edition</th>
               <th>Price</th>
-              <th>img</th>
             </tr>
           </thead>
           <tbody>
             <% for(let i=1; i < f2fCardArray.length; i++){ %>
             <tr>
-              <td><%- f2fCardArray[i].cardName %></td>
+              <td>
+                <img src="<%- f2fCardArray[i].cardImage %>" style="visibility:hidden" id = "img<% i %>">
+                <a href="<%- f2fCardArray[i].cardImage %>" onmouseover = "show('<% i %>')"><%- f2fCardArray[i].cardName %></a>
+              </td>
               <td><%- f2fCardArray[i].cardEdition %></td>
-              <td><%- f2fCardArray[i].cardPrice %></td>
-              <td><a href="<%- f2fCardArray[i].cardImage %>">
-                <img src="<%- f2fCardArray[i].cardImage %>" alt="A digital representation of the cardboard Magic the Gathering card"/>
-              </a></td>
+              <td><%- f2fCardArray[i].cardPrice %></td>              
             <% } %>
             </tr>
           </tbody>
@@ -157,4 +156,9 @@
     </div>
 
   </body>
+  <script type = "text/javascript">
+    function show(i) {
+        document.getElementById('img' + i).style.visibility = 'visible';
+    }
+    </script>
 </html>
