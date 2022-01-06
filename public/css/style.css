@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1d3557;
+  }
+
+  u{
+    color: #1d3557;
+    cursor: pointer;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    background-color: #f1faee;  
+    font-weight: bold;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 16px;
+    border: 2px solid #1d3557;
+  }
+
+  thead{
+    color: #f1faee; 
+    background-color: #e63946;
+  }
+
+  caption {
+    color: #f1faee; 
+    font-weight:  bold;
+    padding:50px;
+    margin-top:50px;
+  }
+
+  @media (min-width: 601px) {
+    .row {
+      display: flex;
+      margin-left:-5px;
+      margin-right:-5px;
+    }
+
+    .column {
+      flex: 50%;
+      padding: 5px;
+      text-align: center;
+    }
+  }
+
+  .navbar{
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #1d3557;
+    height:50px;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    font-weight: bold;
+  }
+
+  .navbar input{
+    background-color:#1d3557;
+    border:2px solid #457b9d;
+    height:100%;
+    width:73%;
+    color:white;
+  }
+  .navbar input:focus{
+    background-color:#1d3557;
+    outline: none;
+    height:100%;  
+    color:white;
+  }
+
+  .navbar button{
+    height:100%;
+    width:25%;    
+    border:2px solid #457b9d;
+    background-color:#1d3557;
+    color:white;
+  }
