@@ -34,8 +34,8 @@
             <% for(let i=1; i < f2fCardArray.length; i++){ %>
             <tr>
               <td>
-                <div onclick = "show('<%= i %>')">
-                  <img src="<%- f2fCardArray[i].cardImage %>" style="display:none" id = "img<%= i %>" class="card-preview">
+                <div onclick = "showf2f('<%= i %>')">
+                  <img src="<%- f2fCardArray[i].cardImage %>" style="display:none" id = "f2f<%= i %>" class="card-preview">
                   <u><%- f2fCardArray[i].cardName %></u>
                 </div>
               </td>
@@ -59,7 +59,7 @@
           <tbody>
             <% for(let i=1; i < imgCardArray.length; i++){ %>
             <tr>
-              <td><div onclick = "show('<%= i %>')">
+              <td><div onclick = "showImg('<%= i %>')">
                     <img src="<%- imgCardArray[i].cardImage %>" style="display:none" id = "img<%= i %>" class="card-preview">
                     <u><%- imgCardArray[i].cardName %></u>
                   </div>
@@ -75,7 +75,18 @@
 
   </body>
   <script type = "text/javascript">
-    function show(i) {
+    function showf2f(i) {
+
+      if(document.getElementById('f2f' + i).style.display == 'block'){
+        document.getElementById('f2f' + i).style.display = 'none'
+      } else {
+        document.querySelectorAll('.card-preview').forEach(c => c.style.display = 'none');
+        document.getElementById('f2f' + i).style.display = 'block';
+      }
+
+    }
+
+    function showImg(i) {
 
       if(document.getElementById('img' + i).style.display == 'block'){
         document.getElementById('img' + i).style.display = 'none'
@@ -84,6 +95,6 @@
         document.getElementById('img' + i).style.display = 'block';
       }
 
-    }
+}
     </script>
 </html>
