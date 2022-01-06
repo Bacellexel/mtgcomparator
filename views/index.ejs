@@ -118,7 +118,7 @@
             <tr>
               <td>
                 <img src="<%- f2fCardArray[i].cardImage %>" style="display:none" id = "img<%= i %>">
-                <a href="" onmouseover = "show('<%= i %>')" onmouseleave = "unshow('<%= i %>')"><%- f2fCardArray[i].cardName %></a>
+                <a href="" onclick = "show('<%= i %>')"><%- f2fCardArray[i].cardName %></a>
               </td>
               <td><%- f2fCardArray[i].cardEdition %></td>
               <td><%- f2fCardArray[i].cardPrice %></td>              
@@ -153,10 +153,11 @@
   </body>
   <script type = "text/javascript">
     function show(i) {
-        document.getElementById('img' + i).style.display = 'block';
-    }
-    function unshow(i) {
+      if(document.getElementById('img' + i).style.display == 'block'){
         document.getElementById('img' + i).style.display = 'none';
+      } else {
+        document.getElementById('img' + i).style.display = 'block';
+      }
     }
     </script>
 </html>
