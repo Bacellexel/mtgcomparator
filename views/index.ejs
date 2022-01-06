@@ -161,12 +161,12 @@
     function show(i) {
 
       if(document.getElementById('img' + i).style.display == 'block'){
-        document.getElementById('img' + i).style.display == 'none'
+        document.getElementById('img' + i).style.display = 'none'
       } else {
         document.querySelectorAll('.card-preview').forEach(c => c.style.display = 'none');
         document.getElementById('img' + i).style.display = 'block';
       }
-      
+
     }
     </script>
 </html>
