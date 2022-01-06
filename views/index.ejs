@@ -117,7 +117,7 @@
             <% for(let i=1; i < f2fCardArray.length; i++){ %>
             <tr>
               <td>
-                <img src="<%- f2fCardArray[i].cardImage %>" style="visibility:hidden" id = "img<%= i %>">
+                <img src="<%- f2fCardArray[i].cardImage %>" style="display:none" id = "img<%= i %>">
                 <a href="<%- f2fCardArray[i].cardImage %>" onmouseover = "show('<%= i %>')"><%- f2fCardArray[i].cardName %></a>
               </td>
               <td><%- f2fCardArray[i].cardEdition %></td>
@@ -153,7 +153,7 @@
   </body>
   <script type = "text/javascript">
     function show(i) {
-        document.getElementById('img' + i).style.visibility = 'visible';
+        document.getElementById('img' + i).style.display = 'block';
     }
     </script>
 </html>
