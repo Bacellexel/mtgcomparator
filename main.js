@@ -1,4 +1,3 @@
-const { xml } = require('cheerio/lib/static');
 const express = require('express');
 const app = express();
 const expressEjsLayout = require('express-ejs-layouts');
