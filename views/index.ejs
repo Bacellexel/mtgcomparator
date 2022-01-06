@@ -23,6 +23,10 @@
         background-color: #1d3557;
       }
 
+      u{
+        color: #1d3557;
+      }
+
       table {
         border-collapse: collapse;
         border-spacing: 0;
@@ -119,7 +123,7 @@
               <td>
                 <div onclick = "show('<%= i %>')">
                   <img src="<%- f2fCardArray[i].cardImage %>" style="display:none" id = "img<%= i %>" class="card-preview">
-                  <%- f2fCardArray[i].cardName %>
+                  <u><%- f2fCardArray[i].cardName %></u>
                 </div>
               </td>
               <td><%- f2fCardArray[i].cardEdition %></td>
