@@ -117,8 +117,10 @@
             <% for(let i=1; i < f2fCardArray.length; i++){ %>
             <tr>
               <td>
-                <img src="<%- f2fCardArray[i].cardImage %>" style="display:none" id = "img<%= i %>">
-                <div onclick = "show('<%= i %>')"><%- f2fCardArray[i].cardName %></div>
+                <div onclick = "show('<%= i %>')">
+                  <img src="<%- f2fCardArray[i].cardImage %>" style="display:none" id = "img<%= i %>" class="card-preview">
+                  <%- f2fCardArray[i].cardName %>
+                </div>
               </td>
               <td><%- f2fCardArray[i].cardEdition %></td>
               <td><%- f2fCardArray[i].cardPrice %></td>              
@@ -153,6 +155,9 @@
   </body>
   <script type = "text/javascript">
     function show(i) {
+
+      document.getElementsByClassName("card-preview").style.display = 'none';
+
       if(document.getElementById('img' + i).style.display == 'block'){
         document.getElementById('img' + i).style.display = 'none';
       } else {
