@@ -92,12 +92,11 @@ app.post('/', async (req, res) => {
 
     for(let i = 0; i < imgNameArray.length; i++){
         if(typeof(imgPriceArray[i]) !== 'undefined'){
-            console.log(imgImageArray[i]);
             imgCards.push({
                 cardName: imgNameArray[i],
                 cardPrice: imgPriceArray[i],
                 cardEdition: imgEditionArray[i],
-                imgImage: 'https://www.imaginaire.com/' + imgImageArray[i]
+                cardImage: 'https://www.imaginaire.com/' + imgImageArray[i]
             });
         }
     }
