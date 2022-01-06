@@ -45,7 +45,7 @@ app.post('/', async (req, res) => {
     const imgEdition = 'div.card-info > span:nth-child(2)';
 
     await page.goto('https://www.facetofacegames.com/search/?keyword=' + cardName);
-    await page2.goto('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?q=' + cardName);
+    await page2.goto('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?isinstock=1&titre=' + cardName);
 
     await page.setRequestInterception(true)
     page.on('request', (request) => {
