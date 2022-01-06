@@ -59,7 +59,11 @@
           <tbody>
             <% for(let i=1; i < imgCardArray.length; i++){ %>
             <tr>
-              <td><%- imgCardArray[i].cardName %></td>
+              <td><div onclick = "show('<%= i %>')">
+                    <img src="<%- imgCardArray[i].cardImage %>" style="display:none" id = "img<%= i %>" class="card-preview">
+                    <u><%- imgCardArray[i].cardName %></u>
+                  </div>
+              </td>
               <td><%- imgCardArray[i].cardEdition %></td>
               <td><%- imgCardArray[i].cardPrice %></td>
             <% } %>

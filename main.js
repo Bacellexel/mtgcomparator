@@ -1,3 +1,4 @@
+const { xml } = require('cheerio/lib/static');
 const express = require('express');
 const app = express();
 const expressEjsLayout = require('express-ejs-layouts');
@@ -43,6 +44,7 @@ app.post('/', async (req, res) => {
     const imgPrice = 'div.card-info > div.input-group > div.price-listing > table > tbody > tr:nth-child(2) > td:nth-child(2)'
     const imgName = 'div.card-info > h3 > a'
     const imgEdition = 'div.card-info > span:nth-child(2)';
+    const imgImage = 'li.card-listing > div.magic-card > a > img'; 
 
     await page.goto('https://www.facetofacegames.com/search/?keyword=' + cardName);
     await page2.goto('https://imaginaire.com/fr/magic/recherche-avancee/resultats.html?isinstock=1&titre=' + cardName);
@@ -68,7 +70,7 @@ app.post('/', async (req, res) => {
     let imgPriceArray = await getData(page2, imgPrice);
     let imgNameArray = await getData(page2, imgName);
     let imgEditionArray = await getData(page2, imgEdition);
-
+    let imgImageArray = await getAttributeData(page2, imgImage);
     
     browser.close();
 
@@ -94,7 +96,8 @@ app.post('/', async (req, res) => {
             imgCards.push({
                 cardName: imgNameArray[i],
                 cardPrice: imgPriceArray[i],
-                cardEdition: imgEditionArray[i]
+                cardEdition: imgEditionArray[i],
+                imgImage: 'https://www.imaginaire.com/' + imgImageArray[i]
             });
         }
     }
