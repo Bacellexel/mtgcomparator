@@ -96,11 +96,6 @@
         background-color:#1d3557;
         color:white;
       }
-
-      a:hover:after {
-        content: url(https://cdn11.bigcommerce.com/s-641uhzxs7j/products/267274/images/290201/ebc01ab4-d89a-4d25-bf54-6aed33772f4b__43237.1587694775.220.290.jpg?c=1);
-        display: block;
-      }
     </style>
     <div class = "navbar">
       <form action="/" method="post">
@@ -122,8 +117,8 @@
             <% for(let i=1; i < f2fCardArray.length; i++){ %>
             <tr>
               <td>
-                <img src="<%- f2fCardArray[i].cardImage %>" style="visibility:hidden" id = "img<% i %>">
-                <a href="<%- f2fCardArray[i].cardImage %>" onmouseover = "show('<% i %>')"><%- f2fCardArray[i].cardName %></a>
+                <img src="<%- f2fCardArray[i].cardImage %>" style="visibility:hidden" id = "img<%= i %>">
+                <a href="<%- f2fCardArray[i].cardImage %>" onmouseover = "show('<%= i %>')"><%- f2fCardArray[i].cardName %></a>
               </td>
               <td><%- f2fCardArray[i].cardEdition %></td>
               <td><%- f2fCardArray[i].cardPrice %></td>              
