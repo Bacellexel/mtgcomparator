@@ -98,3 +98,8 @@
   ::-ms-input-placeholder { /* Microsoft Edge */
     color:white;
   }
+
+  .card-preview{
+      max-width: 213px;
+      max-height: 290px;
+  }
