@@ -70,10 +70,6 @@ app.post('/', async (req, res) => {
     let imgNameArray = await getData(page2, imgName);
     let imgEditionArray = await getData(page2, imgEdition);
     let imgImageArray = await getAttributeData(page2, imgImage);
-    
-    page.close();
-    page2.close();    
-    browser.close();
 
     res.redirect('/')
 
@@ -102,6 +98,10 @@ app.post('/', async (req, res) => {
             });
         }
     }
+
+    page.close();
+    page2.close();    
+    browser.close();
 
 })
 
