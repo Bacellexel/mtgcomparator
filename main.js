@@ -99,9 +99,9 @@ app.post('/', async (req, res) => {
         }
     }
 
-    page.close();
-    page2.close();    
-    browser.close();
+    await page.close();
+    await page2.close();    
+    await browser.close();
 
 })
 
