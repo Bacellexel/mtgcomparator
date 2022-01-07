@@ -59,7 +59,7 @@ app.post('/', async (req, res) => {
     })
 
     await page.waitForSelector(f2fName);
-    await page2.waitForSelector('.card-info')
+    await page2.waitForSelector('.magic-main')
 
     let f2fPriceArray = await getData(page, f2fPrice);
     let f2fNameArray = await getData(page, f2fName);
