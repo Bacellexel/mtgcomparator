@@ -28,7 +28,6 @@ app.post('/', async (req, res) => {
 
     const { cardName } = req.body;
     const browser = await puppeteer.launch({
-        "executablePath": '/usr/bin/chromium-browser',
         'args': [
             '--no-sandbox',
             'disable-setuid-sandbox'
