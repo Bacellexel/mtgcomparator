@@ -35,8 +35,8 @@ app.get('/', isAuthenticated, (req, res) => {
 
    res.render('index', 
      {
-        f2fCardArray: sessionsSearch["f2f"+ req.user.id],
-        imgCardArray: sessionsSearch["img"+ req.user.id]
+        f2fCardArray: sessionsSearch["f2f"+ req.session.id],
+        imgCardArray: sessionsSearch["img"+ req.session.id]
      });
 });
 
