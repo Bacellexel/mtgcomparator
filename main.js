@@ -1,19 +1,37 @@
 const express = require('express');
 const app = express();
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 const expressEjsLayout = require('express-ejs-layouts');
 const puppeteer = require('puppeteer');
 const port = process.env.PORT || 8000;
 
+const oneDay = 1000 * 60 * 60 * 24;
+
 let f2fCards = [{}];
 let imgCards = [{}];
+
 app.set('view engine', 'ejs');
+
 app.use(expressEjsLayout);
-
 app.use(express.urlencoded({extended: false}));
-
 app.use(express.static(__dirname + "/public/"));
+app.use(cookieParser());
+app.use(sessions({
+    secret:"",
+    saveUninitialized:true,
+    cookie: {maxAge: oneDay },
+    resave: false
+}));
+
+var session;
 
 app.get('/', (req, res) => {
+
+    session=req.session;
+    session.userid= Math.random();
+    console.log(req.session);
+
     res.render('index', 
     {
         f2fCardArray: f2fCards,
