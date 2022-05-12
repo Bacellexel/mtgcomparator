@@ -24,7 +24,7 @@ app.use(sessions({
     resave: false
 }));
 
-let sessionsSearch = {};
+let sessionsSearch = {String, Object};
 
 function isAuthenticated (req, res, next) {
     if (req.session.user) next()
@@ -33,37 +33,37 @@ function isAuthenticated (req, res, next) {
 
 app.get('/', isAuthenticated, (req, res) => {
 
-    if(sessionsSearch["f2f"+ req.session.id] =! undefined){
+    console.log(sessionsSearch);
+    if(!sessionsSearch["f2f"+ req.session.id] || !sessionsSearch["img"+ req.session.id] == undefined){
+        res.render('index',
+        {
+        f2fCardArray: f2fCards,
+        imgCardArray: imgCards
+        });
+    } else {
         res.render('index', 
         {  
            f2fCardArray: sessionsSearch["f2f"+ req.session.id],
            imgCardArray: sessionsSearch["img"+ req.session.id]
         });
-    } else {
-        res.render('index', 
-        {  
-           f2fCardArray: f2fCards,
-           imgCardArray: imgCards
-        });
     }
-   
 });
+
 
 app.get('/', (req, res) => {
 
-     // regenerate the session, which is good practice to help
-  // guard against forms of session fixation
   req.session.regenerate(function (err) {
     if (err) next(err)
 
-    // store user information in session, typically a user id
     req.session.user = Math.random().toString();
 
-    // save the session before redirection to ensure page
-    // load does not happen before session is saved
     req.session.save(function (err) {
       if (err) return next(err)
-      res.redirect('/')
+      res.render('index',
+        {
+        f2fCardArray: f2fCards,
+        imgCardArray: imgCards
+        });
     })
   })
 
@@ -150,7 +150,6 @@ app.post('/', async (req, res) => {
 
     sessionsSearch["f2f"+ req.session.id] = f2fCards;
     sessionsSearch["img" + req.session.id] = imgCards;
-
     await page.close();
     await page2.close();    
     await browser.close();
