@@ -24,25 +24,40 @@ app.use(sessions({
     resave: false
 }));
 
-var session;
+
+function isAuthenticated (req, res, next) {
+    if (req.session.user) next()
+    else next('route')
+  }
+
+app.get('/', isAuthenticated, (req, res) => {
+
+   res.render('index', 
+     {
+        f2fCardArray: f2fCards,
+        imgCardArray: imgCards
+     });
+});
 
 app.get('/', (req, res) => {
 
-    if(!req.session.user){
+     // regenerate the session, which is good practice to help
+  // guard against forms of session fixation
+  req.session.regenerate(function (err) {
+    if (err) next(err)
 
-        session=req.session;
-        session.userid= Math.random();
-        res.redirect('/')
+    // store user information in session, typically a user id
+    req.session.user = Math.random().toString();
 
-    }  else {
-        
-        res.render('index', 
-        {
-            f2fCardArray: f2fCards,
-            imgCardArray: imgCards
-        });
-    }
-});
+    // save the session before redirection to ensure page
+    // load does not happen before session is saved
+    req.session.save(function (err) {
+      if (err) return next(err)
+      res.redirect('/')
+    })
+  })
+
+ });
 
 app.post('/', async (req, res) => {
 
