@@ -24,7 +24,7 @@ app.use(sessions({
     resave: false
 }));
 
-let sessionsSearch = {String, Object};
+let sessionsSearch = [{}];
 
 function isAuthenticated (req, res, next) {
     if (req.session.user) next()
@@ -32,21 +32,11 @@ function isAuthenticated (req, res, next) {
   }
 
 app.get('/', isAuthenticated, (req, res) => {
-
-    console.log(sessionsSearch);
-    if(sessionsSearch["f2f"+ req.session.id] || sessionsSearch["img"+ req.session.id] == undefined){
-        res.render('index',
-        {
-        f2fCardArray: f2fCards,
-        imgCardArray: imgCards
-        });
-    } else {
-        res.render('index', 
+    res.render('index', 
         {  
            f2fCardArray: sessionsSearch["f2f"+ req.session.id],
            imgCardArray: sessionsSearch["img"+ req.session.id]
         });
-    }
 });
 
 
@@ -61,8 +51,8 @@ app.get('/', (req, res) => {
       if (err) return next(err)
       res.render('index',
         {
-        f2fCardArray: f2fCards,
-        imgCardArray: imgCards
+        f2fCardArray: [{}],
+        imgCardArray: [{}]
         });
     })
   })
