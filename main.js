@@ -139,8 +139,8 @@ app.post('/', async (req, res) => {
         }
     }
 
-    sessionsSearch["f2f"+ req.user.id] = f2fCards;
-    sessionsSearch["img" + req.user.id] = imgCards;
+    sessionsSearch["f2f"+ req.session.id] = f2fCards;
+    sessionsSearch["img" + req.session.id] = imgCards;
 
     await page.close();
     await page2.close();    
