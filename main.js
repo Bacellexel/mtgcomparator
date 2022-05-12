@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(__dirname + "/public/"));
 app.use(cookieParser());
 app.use(sessions({
-    secret:"",
+    secret:Math.random().toString(),
     saveUninitialized:true,
     cookie: {maxAge: oneDay },
     resave: false
