@@ -24,6 +24,7 @@ app.use(sessions({
     resave: false
 }));
 
+let sessionsSearch;
 
 function isAuthenticated (req, res, next) {
     if (req.session.user) next()
@@ -34,8 +35,8 @@ app.get('/', isAuthenticated, (req, res) => {
 
    res.render('index', 
      {
-        f2fCardArray: f2fCards,
-        imgCardArray: imgCards
+        f2fCardArray: sessionsSearch["f2f"+ req.user.id],
+        imgCardArray: sessionsSearch["img"+ req.user.id]
      });
 });
 
@@ -137,6 +138,9 @@ app.post('/', async (req, res) => {
             });
         }
     }
+
+    sessionsSearch["f2f"+ req.user.id] = f2fCards;
+    sessionsSearch["img" + req.user.id] = imgCards;
 
     await page.close();
     await page2.close();    
