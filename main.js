@@ -34,7 +34,7 @@ function isAuthenticated (req, res, next) {
 app.get('/', isAuthenticated, (req, res) => {
 
     console.log(sessionsSearch);
-    if(!sessionsSearch["f2f"+ req.session.id] || !sessionsSearch["img"+ req.session.id] == undefined){
+    if(sessionsSearch["f2f"+ req.session.id] || sessionsSearch["img"+ req.session.id] == undefined){
         res.render('index',
         {
         f2fCardArray: f2fCards,
