@@ -75,6 +75,7 @@ app.post('/', async (req, res) => {
 
     /* Filtering out unique cards */
     for(let i = 0; i < f2fNameArray.length; i++){
+        
         if(!f2fNameArray[i].includes("Scan")
             && !f2fEditionArray[i].includes("World")
             && !f2fEditionArray[i].includes("Gift")
@@ -113,7 +114,7 @@ async function getData(page, selector){
         })
         return results;
     }, selector);
-    return valueArray;
+    return valueArray.filter(x => x);
 }
 
 async function getAttributeData(page, selector){
