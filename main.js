@@ -24,7 +24,7 @@ app.use(sessions({
     resave: false
 }));
 
-let sessionsSearch;
+let sessionsSearch = {};
 
 function isAuthenticated (req, res, next) {
     if (req.session.user) next()
