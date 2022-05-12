@@ -28,15 +28,20 @@ var session;
 
 app.get('/', (req, res) => {
 
-    session=req.session;
-    session.userid= Math.random();
-    console.log(req.session);
+    if(!req.session.user){
 
-    res.render('index', 
-    {
-        f2fCardArray: f2fCards,
-        imgCardArray: imgCards
-    });
+        session=req.session;
+        session.userid= Math.random();
+        res.redirect('/')
+
+    }  else {
+        
+        res.render('index', 
+        {
+            f2fCardArray: f2fCards,
+            imgCardArray: imgCards
+        });
+    }
 });
 
 app.post('/', async (req, res) => {
