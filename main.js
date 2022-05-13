@@ -32,11 +32,23 @@ function isAuthenticated (req, res, next) {
   }
 
 app.get('/', isAuthenticated, (req, res) => {
-    res.render('index', 
-        {  
-           f2fCardArray: sessionsSearch["f2f"+ req.session.id],
-           imgCardArray: sessionsSearch["img"+ req.session.id]
+    if(!sessionsSearch["f2f"+ req.session.id] == undefined){
+
+        res.render('index', 
+            {  
+            f2fCardArray: sessionsSearch["f2f"+ req.session.id],
+            imgCardArray: sessionsSearch["img"+ req.session.id]
+            });
+            
+        } else {
+
+            res.render('index',
+        {
+        f2fCardArray: [{}],
+        imgCardArray: [{}]
         });
+
+        }
 });
 
 
